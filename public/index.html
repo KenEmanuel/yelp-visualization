@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="yelpApp" ng-controller="curryController as curry" class="container">
+  <div class="row">
+    <div class="jumbotron text-center col-md-12">
+      <h1>{{ curry.message }}</h1>
+    </div>
+    <div ng-repeat="name in curry.name">
+      {{ name }}
+    </div>
+  </div>
+</body>
+</html>
