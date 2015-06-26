@@ -11,9 +11,16 @@
   <div class="row">
     <div class="jumbotron text-center col-md-12">
       <h1>{{ curry.message }}</h1>
+      <form novalidate class="simple-form">
+        <h3>Location: <input type="text" ng-model="curry.location" placeholder="irvine"></h3>
+        <button type="button" action="submit"
+      </form>
     </div>
-    <div ng-repeat="name in curry.name">
-      {{ name }}
+    <div class="well">
+      <div ng-repeat="indian in curry.indian | orderBy: '-rating'">
+        <img src="{{indian.image}}" class="img-circle img-responsive">
+        <p>{{indian.name}}, {{indian.rating}} stars from {{indian.numReview}} reviews.</p>
+      </div>
     </div>
   </div>
 </body>

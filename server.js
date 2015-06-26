@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "*");
     res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
     if("OPTIONS" == req.method) {
         res.send(200);
@@ -25,11 +25,11 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + 'public/index.html'))
 });
 
-app.get('/restaurants', function(req, res) {
-    //var searchQuery = {};
-    //
-    //searchQuery.terms = req.params.terms;
-    //searchQuery.location = req.params.location;
+app.get('/restaurants/:location', function(req, res) {
+    var searchQuery = {};
+
+    searchQuery.term = req.params.foodTypes;
+    searchQuery.location = req.params.location;
 
     yelp.search({term: 'Indian', location: 'Irvine' }, function(error, data) {
         console.log(error);
