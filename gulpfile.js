@@ -1,20 +1,23 @@
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
+var mocha = require('gulp-mocha');
 var bs = require('browser-sync').create();
 
 gulp.task('nodemon', function() {
-    bs.init({
-        proxy: 'localhost:3000'
-    });
     nodemon({
         script: 'server.js',
-        ext: 'js html'
+        ext: 'js less html'
     })
         .on('start', ['watch'])
         .on('change', ['watch'])
         .on('restart', function() {
-            console.log('server restarted')
-        })
+            console.log('Restarted!');
+        });
+});
+
+gulp.task('test', function() {
+    return gulp.src(['test/*.js'])
+        .pipe(mocha({reporter: 'landing'}));
 });
 
 gulp.task('watch', function() {

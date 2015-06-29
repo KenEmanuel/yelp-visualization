@@ -13,11 +13,11 @@
       <h1>{{ curry.message }}</h1>
       <form novalidate class="simple-form">
         <h3>Location: <input type="text" ng-model="curry.location" placeholder="irvine"></h3>
-        <button type="button" action="submit"
+        <button type="button" ng-click="curry.submit()">Submit</button>
       </form>
     </div>
     <div class="well">
-      <div ng-repeat="indian in curry.indian | orderBy: '-rating'">
+      <div ng-repeat="indian in curry.data">
         <img src="{{indian.image}}" class="img-circle img-responsive">
         <p>{{indian.name}}, {{indian.rating}} stars from {{indian.numReview}} reviews.</p>
       </div>

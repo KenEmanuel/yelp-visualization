@@ -22,16 +22,18 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + 'public/index.html'))
+    res.sendFile(path.join(__dirname + 'public/index.html')).sendStatus(200);
 });
 
 app.get('/restaurants/:location', function(req, res) {
-    var searchQuery = {};
 
-    searchQuery.term = req.params.foodTypes;
-    searchQuery.location = req.params.location;
+    var searcher = {};
+    searcher.term = 'Indian';
+    searcher.location = req.params.location;
 
-    yelp.search({term: 'Indian', location: 'Irvine' }, function(error, data) {
+    console.log('here');
+
+    yelp.search(searcher, function(error, data) {
         console.log(error);
         var indianList = [];
         var indian = {};
