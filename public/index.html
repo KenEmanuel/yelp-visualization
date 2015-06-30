@@ -5,6 +5,8 @@
   <title></title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+  <script src="http://www.d3plus.org/js/d3plus.js"></script>
   <script src="app.js"></script>
 </head>
 <body ng-app="yelpApp" ng-controller="curryController as curry" class="container">
@@ -16,12 +18,15 @@
         <button type="button" ng-click="curry.submit()">Submit</button>
       </form>
     </div>
-    <div class="well">
-      <div ng-repeat="indian in curry.data">
-        <img src="{{indian.image}}" class="img-circle img-responsive">
-        <p>{{indian.name}}, {{indian.rating}} stars from {{indian.numReview}} reviews.</p>
-      </div>
+    <div class="row">
+      <div id="viz"></div>
     </div>
+    <!--<div class="well">-->
+      <!--<div ng-repeat="indian in curry.data">-->
+        <!--<img src="{{indian.image}}" class="img-circle img-responsive">-->
+        <!--<p>{{indian.name}}, {{indian.rating}} stars from {{indian.numReview}} reviews.</p>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </body>
 </html>
