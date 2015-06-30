@@ -1,12 +1,8 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var yelp = require('yelp').createClient({
-    consumer_key: "0w2RTA4_ReC994Iy9-XzhQ",
-    consumer_secret: "4biMNsVK5ISRaZtXklaa_W1wNhg",
-    token: "EVY5XPiS-CYgzdEx82qIp-tyaccAThY4",
-    token_secret: "oiv-C4YMBNlNa804Jk8H28ICuAk"
-});
+var yelpKey = require('./key.js');
+var yelp = require('yelp').createClient(yelpKey.apiKey);
 
 app.use(express.static(__dirname + '/public'));
 
