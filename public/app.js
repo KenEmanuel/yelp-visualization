@@ -4,21 +4,20 @@ yelpApp.controller('yelpController', function($http) {
     var vm = this;
     vm.message = 'Lets check out some cuisines';
     vm.foodTypes = [];
-
     vm.submit = function() {
         vm.foodTypes = [vm.foodOne, vm.foodTwo];
         var businesses = [];
-        
         for (var k = 0; k < vm.foodTypes.length; k++) {
             $http.get('http://localhost:3000/restaurants/' + vm.location + '/' + vm.foodTypes[k])
                 .success(function(data) {
                     vm.data = data;
-
                     for(var i = 0; i < data.length; i++) {
                         var business = {};
                         business.name = data[i].name;
-                        business.value = data[i].numReview;
-                        business.rating = 'Rating: ' +data[i].rating + ' stars';
+                        business.reviews = data[i].numReview;
+                        business.totalReviews = 'From ' + data[i].numReview + ' reviews';
+                        business.categories = data[i].category;
+                        business.rating = 'Rating: ' + data[i].rating + ' stars';
                         if(data[i].rating === 5) {
                             business.color = '#ffd700';//gold
                         } else if(data[i].rating === 4.5) {
@@ -33,28 +32,37 @@ yelpApp.controller('yelpController', function($http) {
                         businesses.push(business);
                     }
                     for(var j = 0; j < businesses.length; j++) {
-                        if(j < 20) {
-                            businesses[j].group = vm.foodOne;
-                        } else if (j >= 20 && j < 40) {
-                            businesses[j].group = vm.foodTwo;
+                        for(var m = 0; m < businesses[j].categories.length; m++) {
+                            for(var n = 0; n < businesses[j].categories[m].length; n++) {
+                                if(j < 20 && vm.foodOne == businesses[j].categories[m][n]) {
+                                    businesses[j].group = vm.foodOne;
+                                } else if(j < 20 && vm.foodTwo == businesses[j].categories[m][n]) {
+                                    businesses[j].group = vm.foodTwo;
+                                } else if(j >= 20 && j < 40
+                                    && vm.foodOne == businesses[j].categories[m][n]) {
+                                    businesses[j].group = vm.foodOne;
+                                } else if(j >= 20 && j < 40
+                                    && vm.foodTwo == businesses[j].categories[m][n]) {
+                                    businesses[j].group = vm.foodTwo;
+                                }
+                            }
+
                         }
                     }
-                    console.log(businesses);
-
                     var visualization = d3plus.viz()
                         .container('div#viz')
                         .data(businesses)
                         .type('bubbles')
-                        .id(['group', 'name', 'rating'])
+                        .id(['group', 'name', 'rating', 'totalReviews'])
                         .depth(1)
-                        .size('value')
+                        .size('reviews')
                         .color('color')
                         .height(600)
                         .draw();
                 })
-            .error(function (data) {
-                console.log(data);
-            });
+                .error(function (data) {
+                    console.log(data);
+                });
+        }
     }
-}
 });

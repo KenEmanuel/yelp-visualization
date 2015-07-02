@@ -3,7 +3,6 @@ var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-
 describe('Get the index page', function() {
     it('got a status 200', function(done) {
         superagent.get('http://localhost:3000')
