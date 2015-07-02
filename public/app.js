@@ -19,15 +19,17 @@ yelpApp.controller('yelpController', function($http) {
                         business.categories = data[i].category;
                         business.rating = 'Rating: ' + data[i].rating + ' stars';
                         if(data[i].rating === 5) {
-                            business.color = '#ffd700';//gold
+                            business.color = '#ffa500';
                         } else if(data[i].rating === 4.5) {
-                            business.color = '#ff0000';//red
-                        } else if (data[i].rating === 4) {
-                            business.color = '#0000ff';//blue
-                        } else if (data[i].rating === 3.5) {
-                            business.color = '#7f00ff';//purple
-                        } else {
-                            business.color = '#ffffff';
+                            business.color = '#ffb732';
+                        } else if(data[i].rating === 4) {
+                            business.color = '#ffc966';
+                        } else if(data[i].rating === 3.5) {
+                            business.color = '#ffd27f';
+                        } else if(data[i].rating === 3.0) {
+                            business.color = '#ffdb99';
+                        } else if(data[i].rating <= 2.5) {
+                            business.color = '#ffedcc';
                         }
                         businesses.push(business);
                     }
@@ -46,7 +48,6 @@ yelpApp.controller('yelpController', function($http) {
                                     businesses[j].group = vm.foodTwo;
                                 }
                             }
-
                         }
                     }
                     var visualization = d3plus.viz()
