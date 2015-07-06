@@ -14,50 +14,50 @@
 </head>
 <body ng-app="yelpApp" ng-controller="yelpController as main" class="container">
   <div class="row">
-    <div class="jumbotron text-center col-md-12 blue">
+    <div class="text-center col-md-12 blue">
       <div class="ui steps">
         <div class="step">
           <div class="content">
-            <div class="title">Enter Location</div>
-            <div ng-bind="main.location"></div>
+            <div class="title">Step 1: Enter Location</div>
+            <!--<div ng-bind="main.location"></div>-->
           </div>
         </div>
         <div class="step" ng-click="main.showSearch()">
           <div class="content">
-            <div class="title">Enter Search Terms</div>
-            <div class="description" ng-bind="main.foodOne"></div>
-            <div class="description" ng-show="main.foodOne">VS</div>
-            <div class="description" ng-bind="main.foodTwo"></div>
+            <div class="title">Step 2: Pick two foods</div>
+            <!--<div class="description" ng-bind="main.foodOne"></div>-->
+            <!--<div class="description" ng-show="main.foodOne">vs</div>-->
+            <!--<div class="description" ng-bind="main.foodTwo"></div>-->
           </div>
         </div>
         <div class="step">
           <div class="content">
             <div class="title">
-              <div>Check Data</div>
+              <div>Step 3: Visualize</div>
             </div>
           </div>
         </div>
       </div>
-      <form novalidate class="form-horizontal">
+      <form novalidate class="form-horizontal col-md-offset-3">
         <div class="form-group">
           <h3>
-            <div class="col-md-offset-3 col-md-6" ng-hide="main.foodOne">
-              <input id="f_1" class="form-control" type="text" ng-model="main.location" placeholder="Enter location" ng-keypress="main.keypressHandler($event, 2)">
+            <div id="locationInput" class="col-md-8">
+              <input id="f_1" class="form-control" type="text" ng-model="main.location" placeholder="Enter location" ng-keypress="main.displaySearch($event); main.keypressHandler($event, 2)">
             </div>
           </h3>
         </div>
-        <div id="foodInput" class="row" ng-show="main.location">
-          <div class="form-group col-md-4 search">
+        <div id="foodInput" class="row">
+          <div class="form-group col-md-3 search">
             <h3>
               <div>
                 <input id="f_2" class="form-control" type="text" ng-model="main.foodOne" placeholder="Enter First Food" ng-keypress="main.keypressHandler($event, 3)">
               </div>
             </h3>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-2">
             <p>VS</p>
           </div>
-          <div class="form-group col-md-4 search">
+          <div class="form-group col-md-3 search">
             <h3>
               <div>
                 <input id="f_3" class="form-control" type="text" ng-model="main.foodTwo" placeholder="Enter Second Food" ng-keypress="main.enter($event)">

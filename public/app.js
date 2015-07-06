@@ -10,6 +10,13 @@ yelpApp.controller('yelpController', function($http) {
         }
     };
 
+    vm.displaySearch = function(event) {
+        if(event.keyCode == 13) {
+            angular.element(document.querySelector('#foodInput')).css('display', 'block');
+            angular.element(document.querySelector('#locationInput')).css('display', 'none');
+        }
+    };
+
     vm.showSearch = function() {
         angular.element(document.querySelector('#foodInput')).css('display', 'block');
     };
@@ -25,9 +32,7 @@ yelpApp.controller('yelpController', function($http) {
                             vm.data = data;
                             for(var i = 0; i < data.length; i++) {
                                 var business = {};
-                                var total = {};
                                 business.name = data[i].name;
-                                total += data[i].numReview;
                                 business.reviews = data[i].numReview;
                                 business.reviewBlurb = 'From ' + data[i].numReview + ' reviews';
                                 business.group = data[i].category;
