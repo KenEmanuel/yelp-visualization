@@ -2,8 +2,13 @@ var yelpApp = angular.module('yelpApp', []);
 
 yelpApp.controller('yelpController', function($http) {
     var vm = this;
-    vm.message = 'Lets check out some cuisines';
     vm.foodTypes = [];
+    vm.keypressHandler = function(event, nextIdx){
+        if(event.keyCode == 13) {
+            angular.element(document.querySelector('#f_'+nextIdx))[0].focus();
+        }
+    };
+
     vm.submit = function() {
         vm.foodTypes = [vm.foodOne, vm.foodTwo];
         var businesses = [];
