@@ -15,25 +15,25 @@
 <body ng-app="yelpApp" ng-controller="yelpController as main" class="container">
   <div class="row">
     <div class="jumbotron text-center col-md-12 blue">
-      <div class="ui ordered steps">
-        <div class="active step">
+      <div class="ui steps">
+        <div class="step">
           <div class="content">
-            <div class="title">Enter Search Location</div>
+            <div class="title">Enter Location</div>
             <div ng-bind="main.location"></div>
           </div>
         </div>
-        <div class="ordered step">
+        <div class="step" ng-click="main.showSearch()">
           <div class="content">
             <div class="title">Enter Search Terms</div>
             <div class="description" ng-bind="main.foodOne"></div>
-            <div class="description">VS</div>
+            <div class="description" ng-show="main.foodOne">VS</div>
             <div class="description" ng-bind="main.foodTwo"></div>
           </div>
         </div>
-        <div class="ordered step">
+        <div class="step">
           <div class="content">
             <div class="title">
-              <button type="button" ng-click="main.submit()">Check Data</button>
+              <div>Check Data</div>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
             </div>
           </h3>
         </div>
-        <div class="row" ng-show="main.location">
+        <div id="foodInput" class="row" ng-show="main.location">
           <div class="form-group col-md-4 search">
             <h3>
               <div>
@@ -60,7 +60,7 @@
           <div class="form-group col-md-4 search">
             <h3>
               <div>
-                <input id="f_3" class="form-control" type="text" ng-model="main.foodTwo" placeholder="Enter Second Food" ng-submit="main.submit()">
+                <input id="f_3" class="form-control" type="text" ng-model="main.foodTwo" placeholder="Enter Second Food" ng-keypress="main.enter($event)">
               </div>
             </h3>
           </div>
