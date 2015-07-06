@@ -13,53 +13,46 @@ yelpApp.controller('yelpController', function($http) {
                     vm.data = data;
                     for(var i = 0; i < data.length; i++) {
                         var business = {};
+                        var total = {};
                         business.name = data[i].name;
+                        total += data[i].numReview;
+                        console.log(total);
                         business.reviews = data[i].numReview;
-                        business.totalReviews = 'From ' + data[i].numReview + ' reviews';
-                        business.categories = data[i].category;
+                        business.reviewBlurb = 'From ' + data[i].numReview + ' reviews';
+                        business.group = data[i].category;
                         business.rating = 'Rating: ' + data[i].rating + ' stars';
-                        if(data[i].rating === 5) {
-                            business.color = '#ffa500';
-                        } else if(data[i].rating === 4.5) {
-                            business.color = '#ffb732';
+                        if(data[i].rating >= 4.5) {
+                            business.color = '#c11c17';
                         } else if(data[i].rating === 4) {
-                            business.color = '#ffc966';
+                            business.color = '#de5003';
                         } else if(data[i].rating === 3.5) {
-                            business.color = '#ffd27f';
+                            business.color = '#e27a1d';
                         } else if(data[i].rating === 3.0) {
-                            business.color = '#ffdb99';
+                            business.color = '#e6aa19';
                         } else if(data[i].rating <= 2.5) {
-                            business.color = '#ffedcc';
+                            business.color = '#f9f1ba';
                         }
                         businesses.push(business);
                     }
-                    for(var j = 0; j < businesses.length; j++) {
-                        for(var m = 0; m < businesses[j].categories.length; m++) {
-                            for(var n = 0; n < businesses[j].categories[m].length; n++) {
-                                if(j < 20 && vm.foodOne == businesses[j].categories[m][n]) {
-                                    businesses[j].group = vm.foodOne;
-                                } else if(j < 20 && vm.foodTwo == businesses[j].categories[m][n]) {
-                                    businesses[j].group = vm.foodTwo;
-                                } else if(j >= 20 && j < 40
-                                    && vm.foodOne == businesses[j].categories[m][n]) {
-                                    businesses[j].group = vm.foodOne;
-                                } else if(j >= 20 && j < 40
-                                    && vm.foodTwo == businesses[j].categories[m][n]) {
-                                    businesses[j].group = vm.foodTwo;
-                                }
-                            }
-                        }
-                    }
-                    var visualization = d3plus.viz()
-                        .container('div#viz')
+                    vm.visualization = d3plus.viz()
+                        .container('#viz')
                         .data(businesses)
                         .type('bubbles')
-                        .id(['group', 'name', 'rating', 'totalReviews'])
+                        .id(['group', 'name', 'rating', 'reviewBlurb'])
                         .depth(1)
                         .size('reviews')
                         .color('color')
                         .height(600)
                         .draw();
+                    vm.visualize = d3plus.viz()
+                        .container('#pie')
+                        .data(businesses)
+                        .type('pie')
+                        .id(['group', 'rating', 'name'])
+                        .size('reviews')
+                        .color('color')
+                        .height(600)
+                        .draw()
                 })
                 .error(function (data) {
                     console.log(data);

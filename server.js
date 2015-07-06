@@ -35,7 +35,7 @@ app.get('/restaurants/:location/:foodTypes', function(req, res) {
                 name: data.businesses[i].name,
                 rating: data.businesses[i].rating,
                 numReview: data.businesses[i].review_count,
-                category: data.businesses[i].categories
+                category: searcher.term
             };
             restaurantList.push(restaurant);
         }

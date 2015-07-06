@@ -1,0 +1,22 @@
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    background-color: #e4f4fa;
+}
+
+p {
+    margin-top: 20px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.blue {
+    background-color: #e4f4fa;
+}
+
+.well {
+    border: none;
+}
+
