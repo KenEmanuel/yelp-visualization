@@ -1,10 +1,14 @@
 body {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    background-color: #e4f4fa;
+    background: url('color-bg.gif') center no-repeat;
 }
 
 p {
     margin-top: 20px;
+}
+
+h2:first-child {
+    margin-top: 5px;
 }
 
 .form-horizontal .form-group {
@@ -12,13 +16,16 @@ p {
     margin-right: 0;
 }
 
-.blue {
-    background-color: #e4f4fa;
-}
-
 .well {
     border: none;
+    background-color: transparent;
 }
+
+.ui.ordered.steps .step.completed:before,
+.ui.steps .step.completed>.icon:before {
+    color: orangered;
+}
+
 #foodInput {
     display: none;
 }

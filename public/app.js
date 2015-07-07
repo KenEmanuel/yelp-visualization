@@ -4,14 +4,15 @@ yelpApp.controller('yelpController', function($http) {
     var vm = this;
     vm.foodTypes = [];
 
-    vm.keypressHandler = function(event, nextIdx){
+    vm.focusNextTab = function(event, nextIndex){
         if(event.keyCode == 13) {
-            angular.element(document.querySelector('#f_' + nextIdx))[0].focus();
+            angular.element(document.querySelector('#input-' + nextIndex))[0].focus();
         }
     };
 
-    vm.displaySearch = function(event) {
+    vm.displaySearchInputs = function(event) {
         if(event.keyCode == 13) {
+            angular.element(document.querySelector('#step-one')).addClass('completed');
             angular.element(document.querySelector('#foodInput')).css('display', 'block');
             angular.element(document.querySelector('#locationInput')).css('display', 'none');
         }
@@ -21,9 +22,10 @@ yelpApp.controller('yelpController', function($http) {
         angular.element(document.querySelector('#foodInput')).css('display', 'block');
     };
 
-    vm.enter = function(event) {
+    vm.submit = function(event) {
         if(event.keyCode == 13) {
             angular.element(document.querySelector('#foodInput')).css('display', 'none');
+            angular.element(document.querySelector('#step-two')).addClass('completed');
                 vm.foodTypes = [vm.foodOne, vm.foodTwo];
                 var businesses = [];
                 for (var k = 0; k < vm.foodTypes.length; k++) {
@@ -68,7 +70,8 @@ yelpApp.controller('yelpController', function($http) {
                                 .size('reviews')
                                 .color('color')
                                 .height(600)
-                                .draw()
+                                .draw();
+                            angular.element(document.querySelector('#step-three')).addClass('completed');
                         })
                         .error(function (data) {
                             console.log(data);

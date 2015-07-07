@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 var mocha = require('gulp-mocha');
-var bs = require('browser-sync').create();
 
 gulp.task('nodemon', function() {
     nodemon({

@@ -19,7 +19,7 @@ describe('Get the restaurants page', function() {
     it('can get back data', function(done) {
         superagent.get('http://localhost:3000/restaurants/Irvine')
             .send({
-                term: 'Indian',
+                term: 'Food',
                 location: 'Irvine'
             })
             .end(function(err, res) {
