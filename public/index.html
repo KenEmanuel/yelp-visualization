@@ -3,7 +3,6 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>Yelp Comparison</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.0/semantic.min.css">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/animate.css">
@@ -18,8 +17,26 @@
   <script src="app.js"></script>
 </head>
 <body ng-app="yelpApp" ng-controller="yelpController as main" class="container">
-  <div class="row">
-    <div class="text-center col-md-12">
+  <div class="ui grid">
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">
+          <div class="ui center aligned huge header">
+            Food Fighter
+            <img src="assets/yelp-android.png" class="ui mini image">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="padded centered row">
+      <div class="ui message">
+        <div class="header">
+          Changes in Service
+        </div>
+        <p>We just updated our privacy policy here to better service our customers. We recommend reviewing the changes.</p>
+      </div>
+    </div>
+    <div class="centered row">
       <div class="ui ordered steps wow slideInLeft" data-wow-duration="2s">
         <div id="step-one" class="step">
           <div class="content">
@@ -39,36 +56,34 @@
           </div>
         </div>
       </div>
-      <form novalidate class="form-horizontal col-md-offset-3">
-        <div class="form-group">
+    </div>
+    <div class="centered row">
+      <form novalidate class="ui form">
+        <div class="field">
           <h3>
-            <div id="locationInput" class="col-md-8">
-              <input id="input-1" class="form-control input-lg wow slideInRight" data-wow-duration="2s" type="text" ng-model="main.location" placeholder="Enter location" ng-keypress="main.displaySearchInputs($event); main.focusNextTab($event, 2)">
+            <div id="locationInput">
+              <input id="input-1" class="wow slideInRight" data-wow-duration="2s" type="text" ng-model="main.location" placeholder="Enter location" ng-keypress="main.displaySearchInputs($event); main.focusNextTab($event, 2)">
             </div>
           </h3>
         </div>
-        <div id="foodInput" class="row">
-          <div class="form-group col-md-3 search">
+        <div id="foodInput">
+          <div class="field">
             <h3>
               <div>
-                <input id="input-2" class="form-control input-lg" type="text" ng-model="main.foodOne" placeholder="Enter First Food" ng-keypress="main.focusNextTab($event, 3)">
+                <input id="input-2" type="text" ng-model="main.foodOne" placeholder="Enter First Food" ng-keypress="main.focusNextTab($event, 3)">
               </div>
             </h3>
-          </div>
-          <div class="col-md-2">
             <h2>VS</h2>
-          </div>
-          <div class="form-group col-md-3 search">
             <h3>
               <div>
-                <input id="input-3" class="form-control input-lg" type="text" ng-model="main.foodTwo" placeholder="Enter Second Food" ng-keypress="main.submit($event)">
+                <input id="input-3" type="text" ng-model="main.foodTwo" placeholder="Enter Second Food" ng-keypress="main.submit($event)">
               </div>
             </h3>
           </div>
         </div>
       </form>
     </div>
-    <div class="container-fluid row well">
+    <div class="centered row">
       <div id="viz"></div>
       <div id="pie"></div>
     </div>
