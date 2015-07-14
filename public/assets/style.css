@@ -9,6 +9,7 @@ p {
 
 h2:first-child {
     margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .form-horizontal .form-group {
