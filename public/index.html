@@ -31,9 +31,9 @@
     <div class="padded centered row">
       <div class="ui message">
         <div class="header">
-          Changes in Service
+          Food Fighter
         </div>
-        <p>We just updated our privacy policy here to better service our customers. We recommend reviewing the changes.</p>
+        <p>This tool allows you to visualize Yelp! ratings and reviews to easily compare two types of foods.</p>
       </div>
     </div>
     <div class="centered row">
@@ -58,30 +58,32 @@
       </div>
     </div>
     <div class="centered row">
-      <form novalidate class="ui form">
-        <div class="field">
-          <h3>
-            <div id="locationInput">
-              <input id="input-1" class="wow slideInRight" data-wow-duration="2s" type="text" ng-model="main.location" placeholder="Enter location" ng-keypress="main.displaySearchInputs($event); main.focusNextTab($event, 2)">
-            </div>
-          </h3>
-        </div>
-        <div id="foodInput">
+      <div class="eight wide column">
+        <form novalidate class="ui form">
           <div class="field">
             <h3>
-              <div>
-                <input id="input-2" type="text" ng-model="main.foodOne" placeholder="Enter First Food" ng-keypress="main.focusNextTab($event, 3)">
-              </div>
-            </h3>
-            <h2>VS</h2>
-            <h3>
-              <div>
-                <input id="input-3" type="text" ng-model="main.foodTwo" placeholder="Enter Second Food" ng-keypress="main.submit($event)">
+              <div id="locationInput">
+                <input id="input-1" class="wow slideInRight" data-wow-duration="2s" type="text" ng-model="main.location" placeholder="Enter location" ng-keypress="main.displaySearchInputs($event); main.focusNextTab($event, 2)">
               </div>
             </h3>
           </div>
-        </div>
-      </form>
+          <div id="foodInput">
+            <div class="field">
+              <h3>
+                <div>
+                  <input id="input-2" type="text" ng-model="main.foodOne" placeholder="Enter First Food" ng-keypress="main.focusNextTab($event, 3)">
+                </div>
+              </h3>
+              <div class="ui huge centered header">VS</div>
+              <h3>
+                <div>
+                  <input id="input-3" type="text" ng-model="main.foodTwo" placeholder="Enter Second Food" ng-keypress="main.submit($event)">
+                </div>
+              </h3>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="centered row">
       <div id="viz"></div>
