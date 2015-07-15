@@ -4,4 +4,4 @@
 
 ##### User can search by location and multiple categories.
 
-![Alt Text](https://github.com/KenEmanuel/yelp-visualization/blob/master/visualization-example.png)
+![Alt Text](https://github.com/KenEmanuel/yelp-visualization/blob/master/data-comparison.png)
