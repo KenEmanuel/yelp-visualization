@@ -1,10 +1,12 @@
+new WOW().init();
+
 var yelpApp = angular.module('yelpApp', []);
 
 yelpApp.controller('yelpController', function($http) {
     var vm = this;
     vm.foodTypes = [];
 
-    vm.focusNextTab = function(event, nextIndex){
+    vm.focusNextTab = function(event, nextIndex) {
         if(event.keyCode == 13) {
             angular.element(document.querySelector('#input-' + nextIndex))[0].focus();
         }
